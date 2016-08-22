@@ -56,7 +56,7 @@ $rijndael = new \phpseclib\Crypt\Rijndael();
 
 $rijndael->setKey('abcdefghijklmnop');
 
-$size = 10 * 1024;
+$size = 10 * 24;
 $plaintext = '';
 for ($i = 0; $i < $size; $i++) {
     $plaintext .= 'a';
