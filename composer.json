@@ -1,0 +1,18 @@
+{
+  "name": "java/roli",
+  "description": "The dcodejava/Roli Repo for web applications",
+  "type": "project",
+  "require": {
+    "facebook/php-sdk-v4": "^5.3",
+    "symfony/security-bundle": "^3.1",
+    "j7mbo/twitter-api-php": "^1.0",
+    "symfony/security-acl": "^3.0"
+  },
+  "license": "GNU GENERAL PUBLIC LICENSE",
+  "authors": [
+    {
+      "name": "Java AKA Daniel Dickson Okorodudu",
+      "email": "dcodejava@gmail.com"
+    }
+  ]
+}
