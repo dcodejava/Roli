@@ -1,7 +1,13 @@
 {
-  "name": "java/roli",
+  "name": "dcodejava/roli",
   "description": "The dcodejava/Roli Repo for web applications",
   "type": "project",
+  "repositories": [
+    {
+      "type": "git",
+      "url": "https://github.com/dcodejava/Roli.git"
+    }
+  ],
   "require": {
     "facebook/php-sdk-v4": "^5.3",
     "symfony/security-bundle": "^3.1",
@@ -17,7 +23,8 @@
   ],
   "autoload": {
     "psr-4": {
-      "phpseclib\\": "vendor/phpseclib"
+      "phpseclib\\": "vendor/phpseclib",
+      "Roli\\": "libraries/"
     }
   }
 }
