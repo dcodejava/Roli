@@ -32,72 +32,27 @@
     /**
      * Created using PhpStorm.
      *
-     * @package    Roli
+     * @project        Roli
      *
-     * @author     Java <dcodejava@gmail.com>
-     * @time-stamp 23/08/2016, 04:58 PM.
+     * @author         Mr. Java <dcodejava@gmail.com>
+     * @time-stamp     Thursday, 25 August 2016, 12:35 AM.
      */
-    namespace Roli\Security\Crypt;
-    // List using classes;
-    use phpseclib\Crypt\Rijndael as Rijndael;
+    namespace Roli\Social\Classes\SocialMedias;
     /**
-     * Base Class for all encryption
+     * Class Facebook a subclass of Roli\Social\Classes\SocialContainer that implements
+     * Roli\Social\Interfaces\SocialInterface
      *
-     * @package    Roli
-     *
-     * @author     Mr. Java <java@panafricancapitalplc.com>
-     * @time-stamp Tuesday, 23 August 2016, 06:13 PM.
+     * @package   dcodejava/Roli
      */
-    class BaseCrypt
+    class Facebook extends SocialContainer
     {
         /**
-         * Decrypts a message.
+         * Method constructor of Facebook
          *
-         * @see        \phpseclib\Crypt\Base::encrypt();
-         * @access     public
-         *
-         * @param String $message The message to be decrypts
-         * @param String $salt    The message slat to use for decrypting
-         *
-         * @time-stamp Tuesday, 23 August 2016, 06:13 PM.
-         *
-         * @return String $plaintext
+         * @param string|string[] $credential The paths of the credentials to load.
          */
-        public static function decrypt($message, $salt)
+        public function __construct($credential = self::CREDENTIALS)
         {
-            $crypt = new Rijndael();
-
-            $master_key = hash('sha256', $salt);
-
-            $crypt->setKey($master_key);
-
-            $plaintext = $crypt->decrypt(base64_decode($message));
-
-            return $plaintext;
-        }
-        /**
-         * Encrypts a message.
-         *
-         * @see        \phpseclib\Crypt\Base::decrypt();
-         * @access     public
-         *
-         * @param String $plaintext The message to be decrypts
-         * @param String $salt      The message slat to use for decrypting
-         *
-         * @time-stamp Wednesday, 24 August 2016, 09:37 AM.
-         *
-         * @return String $cipher_text
-         */
-        public static function encrypt($plaintext, $salt)
-        {
-            $crypt = new Rijndael();
-
-            $master_key = hash('sha256', $salt);
-
-            $crypt->setKey($master_key);
-
-            $cipher_text = base64_encode($crypt->encrypt($plaintext));
-
-            return $cipher_text;
+            parent::__construct($credential);
         }
     }

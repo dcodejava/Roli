@@ -1,4 +1,5 @@
-<?php
+<?xml version="1.0" encoding="utf-8"?>
+<!--
     /**
      * Copyright (c) 2008, 2010, 2016, JavaDan and/or its affiliates. All rights reserved.
      *
@@ -35,69 +36,24 @@
      * @package    Roli
      *
      * @author     Java <dcodejava@gmail.com>
-     * @time-stamp 23/08/2016, 04:58 PM.
+     * @time-stamp Wednesday, 24 August 2016, 11:49 AM.
      */
-    namespace Roli\Security\Crypt;
-    // List using classes;
-    use phpseclib\Crypt\Rijndael as Rijndael;
-    /**
-     * Base Class for all encryption
-     *
-     * @package    Roli
-     *
-     * @author     Mr. Java <java@panafricancapitalplc.com>
-     * @time-stamp Tuesday, 23 August 2016, 06:13 PM.
-     */
-    class BaseCrypt
-    {
-        /**
-         * Decrypts a message.
-         *
-         * @see        \phpseclib\Crypt\Base::encrypt();
-         * @access     public
-         *
-         * @param String $message The message to be decrypts
-         * @param String $salt    The message slat to use for decrypting
-         *
-         * @time-stamp Tuesday, 23 August 2016, 06:13 PM.
-         *
-         * @return String $plaintext
-         */
-        public static function decrypt($message, $salt)
-        {
-            $crypt = new Rijndael();
-
-            $master_key = hash('sha256', $salt);
-
-            $crypt->setKey($master_key);
-
-            $plaintext = $crypt->decrypt(base64_decode($message));
-
-            return $plaintext;
-        }
-        /**
-         * Encrypts a message.
-         *
-         * @see        \phpseclib\Crypt\Base::decrypt();
-         * @access     public
-         *
-         * @param String $plaintext The message to be decrypts
-         * @param String $salt      The message slat to use for decrypting
-         *
-         * @time-stamp Wednesday, 24 August 2016, 09:37 AM.
-         *
-         * @return String $cipher_text
-         */
-        public static function encrypt($plaintext, $salt)
-        {
-            $crypt = new Rijndael();
-
-            $master_key = hash('sha256', $salt);
-
-            $crypt->setKey($master_key);
-
-            $cipher_text = base64_encode($crypt->encrypt($plaintext));
-
-            return $cipher_text;
-        }
-    }
+ -->
+<connections>
+    <connection>
+        <database id="magicfin">
+            <hostname value="/HIreon0dClJBrvMlcskhw=="/>
+            <database value="QY9jDmq30hUvjLFpTKlLNRokmwP37by6X0JvTF7OayA="/>
+            <user id="magicfin" name="2JdGHfKin0qdFUHt78bwNw==" password="XfVv/GZy0X3SuBJhc9tfZg=="
+                  detailed="*Administrator @Dick@"/>
+            <user id="magicfin_java" name="nH7qhNgQWHAHbh8n8758Qw==" password="XfVv/GZy0X3SuBJhc9tfZg=="
+                  detailed="*Administrator @Dick@"/>
+            <user id="magicfin_select" name="H3jzF/afT0FC4H2VwG374A==" password="m+iYRvSeLxiJCfw1+fkL6A=="
+                  detailed="*Administrator @Ass@"/>
+            <user id="magicfin_insert" name="TbPDQs3X3T563nAXov6CKw==" password="LktDTT8uxYcJixp4i/tjog=="
+                  detailed="*Administrator @Boobs@"/>
+            <user id="magicfin_update" name="5qM5tcLxShH9DAcvLtRkhA==" password="9CjHrQoFIWZtl1xMQTVBPA=="
+                  detailed="*Administrator @Cunt@"/>
+        </database>
+    </connection>
+</connections>

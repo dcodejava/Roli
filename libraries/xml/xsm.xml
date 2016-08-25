@@ -1,4 +1,5 @@
-<?php
+<?xml version="1.0" encoding="utf-8"?>
+<!--
     /**
      * Copyright (c) 2008, 2010, 2016, JavaDan and/or its affiliates. All rights reserved.
      *
@@ -35,69 +36,13 @@
      * @package    Roli
      *
      * @author     Java <dcodejava@gmail.com>
-     * @time-stamp 23/08/2016, 04:58 PM.
+     * @time-stamp Wednesday, 24 August 2016, 11:49 AM.
      */
-    namespace Roli\Security\Crypt;
-    // List using classes;
-    use phpseclib\Crypt\Rijndael as Rijndael;
-    /**
-     * Base Class for all encryption
-     *
-     * @package    Roli
-     *
-     * @author     Mr. Java <java@panafricancapitalplc.com>
-     * @time-stamp Tuesday, 23 August 2016, 06:13 PM.
-     */
-    class BaseCrypt
-    {
-        /**
-         * Decrypts a message.
-         *
-         * @see        \phpseclib\Crypt\Base::encrypt();
-         * @access     public
-         *
-         * @param String $message The message to be decrypts
-         * @param String $salt    The message slat to use for decrypting
-         *
-         * @time-stamp Tuesday, 23 August 2016, 06:13 PM.
-         *
-         * @return String $plaintext
-         */
-        public static function decrypt($message, $salt)
-        {
-            $crypt = new Rijndael();
-
-            $master_key = hash('sha256', $salt);
-
-            $crypt->setKey($master_key);
-
-            $plaintext = $crypt->decrypt(base64_decode($message));
-
-            return $plaintext;
-        }
-        /**
-         * Encrypts a message.
-         *
-         * @see        \phpseclib\Crypt\Base::decrypt();
-         * @access     public
-         *
-         * @param String $plaintext The message to be decrypts
-         * @param String $salt      The message slat to use for decrypting
-         *
-         * @time-stamp Wednesday, 24 August 2016, 09:37 AM.
-         *
-         * @return String $cipher_text
-         */
-        public static function encrypt($plaintext, $salt)
-        {
-            $crypt = new Rijndael();
-
-            $master_key = hash('sha256', $salt);
-
-            $crypt->setKey($master_key);
-
-            $cipher_text = base64_encode($crypt->encrypt($plaintext));
-
-            return $cipher_text;
-        }
-    }
+ -->
+<connections>
+    <connection id="facebook">
+        <user id="100012303061465" app_id="q0HoiuHjOaM00lMgcYDH6A=="
+              app_secret="G8r0LeVxlEm+5b8zX+lTFERYaRqElgqdt4LW3LcuBOQUoQD0AM5v6TDLKGPnBrew"
+              default_graph_version="v2.2" detailed="*Administrator @Dick@"/>
+    </connection>
+</connections>

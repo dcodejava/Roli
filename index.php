@@ -37,31 +37,39 @@
      * @author     Java <dcodejava@gmail.com>
      * @time-stamp 22/08/2016, 03:12 PM.
      */
-    require_once 'vendor/autoload.php';
+    require_once __DIR__ . '/vendor/autoload.php';
 
-    use Roli\Security\Crypt\BaseCrypt as BaseCrypt;
+    use Roli\Security\Crypt\BaseCrypt;
 
-    $rijndael = new \phpseclib\Crypt\Rijndael();
+    $name = 'localhost';
+    $password = '*danDD9+2017@';
+    $detailed = '*Administrator @Dick@';
+    $encrypt_name = BaseCrypt::encrypt($name, $detailed);
+    $encrypt_password = BaseCrypt::encrypt($password, $detailed);
 
-    $pass_phrase = '*Administrator @Dick@';
-    $master_key = hash('sha256', $pass_phrase);
+    echo "<h1>User localhost: {$encrypt_name}";
+    echo "<br />Password {$encrypt_password}";
+    echo '<br />User localhost: ' . BaseCrypt::decrypt($encrypt_name, $detailed);
+    echo '<br />Password ' . BaseCrypt::decrypt($encrypt_password, $detailed) . '</h1>';
 
-    $rijndael->setKey($master_key);
+    $app_id = '290233574680993';
+    $app_secret = '04375d7110ec57f9d2d9882b3b01a24c';
+    $detailed = '*Administrator @Dick@';
+    $encrypt_app_id = BaseCrypt::encrypt($app_id, $detailed);
+    $encrypt_app_secret = BaseCrypt::encrypt($app_secret, $detailed);
 
-    $size = 10 * 2;
-    $plaintext = '';
-    for ($i = 0; $i < $size; $i++)
-    {
-        $plaintext .= 'a';
-    }
+    echo '<pre>';
+    echo "encrypted app_id: {$encrypt_app_id}";
+    echo "\n" . "encrypted app_secret: {$encrypt_app_secret}";
+    echo "\n\n" . 'decrypted app_id: ' . BaseCrypt::decrypt($encrypt_app_id, $detailed);
+    echo "\n\n" . 'decrypted app_secret: ' . BaseCrypt::decrypt($encrypt_app_secret, $detailed);
+    echo "\n\n";
+    $sl = new Roli\Data\Loader\SocialLoader();
+    $sl->loadXML(Roli\Social\Interfaces\SocialInterface::CREDENTIALS);
+    echo "\n\n";
+    new Roli\Social\Classes\SocialMedias\Facebook();
+    echo '</pre>';
 
-    echo "<pre>plaintext\t\t= '$plaintext'\n";
-    echo "rijndael\t\t= rijndael->decrypt->encrypt()" . $rijndael->decrypt($rijndael->encrypt($plaintext));
-    echo "\nBaseCrypt::encrypt\t= " . BaseCrypt::encrypt($plaintext, $pass_phrase);
-    echo "\nBaseCrypt::decrypt\t= " . BaseCrypt::decrypt($rijndael->encrypt($plaintext), $pass_phrase);
-    echo "</pre>";
-    echo "<h1>" . Roli\Security\Crypt\BaseCrypt::encrypt($plaintext, $pass_phrase) . "</h1>";
-    echo "<h1>" . Roli\Security\Crypt\BaseCrypt::decrypt($rijndael->encrypt($plaintext), $pass_phrase) . "</h1>";
     $fb = new Facebook\Facebook([
                                     'app_id'                => '290233574680993',
                                     // Replace '290233574680993' with your app id

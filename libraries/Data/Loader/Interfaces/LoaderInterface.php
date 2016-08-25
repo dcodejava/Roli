@@ -35,69 +35,13 @@
      * @package    Roli
      *
      * @author     Java <dcodejava@gmail.com>
-     * @time-stamp 23/08/2016, 04:58 PM.
+     * @time-stamp Thursday, 25 August 2016, 01:46 PM.
      */
-    namespace Roli\Security\Crypt;
-    // List using classes;
-    use phpseclib\Crypt\Rijndael as Rijndael;
+    namespace Roli\Data\Loader\Interfaces;
     /**
-     * Base Class for all encryption
-     *
-     * @package    Roli
-     *
-     * @author     Mr. Java <java@panafricancapitalplc.com>
-     * @time-stamp Tuesday, 23 August 2016, 06:13 PM.
+     * Interface Loader Interface
      */
-    class BaseCrypt
+    interface LoaderInterface
     {
-        /**
-         * Decrypts a message.
-         *
-         * @see        \phpseclib\Crypt\Base::encrypt();
-         * @access     public
-         *
-         * @param String $message The message to be decrypts
-         * @param String $salt    The message slat to use for decrypting
-         *
-         * @time-stamp Tuesday, 23 August 2016, 06:13 PM.
-         *
-         * @return String $plaintext
-         */
-        public static function decrypt($message, $salt)
-        {
-            $crypt = new Rijndael();
-
-            $master_key = hash('sha256', $salt);
-
-            $crypt->setKey($master_key);
-
-            $plaintext = $crypt->decrypt(base64_decode($message));
-
-            return $plaintext;
-        }
-        /**
-         * Encrypts a message.
-         *
-         * @see        \phpseclib\Crypt\Base::decrypt();
-         * @access     public
-         *
-         * @param String $plaintext The message to be decrypts
-         * @param String $salt      The message slat to use for decrypting
-         *
-         * @time-stamp Wednesday, 24 August 2016, 09:37 AM.
-         *
-         * @return String $cipher_text
-         */
-        public static function encrypt($plaintext, $salt)
-        {
-            $crypt = new Rijndael();
-
-            $master_key = hash('sha256', $salt);
-
-            $crypt->setKey($master_key);
-
-            $cipher_text = base64_encode($crypt->encrypt($plaintext));
-
-            return $cipher_text;
-        }
+        public function loadXML($path = '');
     }
